@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rebuttal — Win the disputes you should win.</title>
+  <meta name="description" content="Rebuttal is an AI dispute copilot that helps PayPal sellers gather evidence, evaluate disputes, draft responses and recover revenue.">
+  <meta name="keywords" content="PayPal disputes, dispute management, chargeback recovery, e-commerce protection, fintech SaaS, seller defense copilot, PayPal Seller Protection">
+  <meta name="author" content="Rebuttal">
+  <meta name="creator" content="Rebuttal">
+  <meta name="publisher" content="Rebuttal">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rebuttal — Win the disputes you should win.">
+  <meta property="og:description" content="Rebuttal gathers your evidence, evaluates your case, drafts the response, and helps you submit it — so you can spend less time fighting disputes and more time running your business.">
+  <meta property="og:url" content="https://rebuttal.onrender.com">
+  <meta property="og:site_name" content="Rebuttal">
+  <meta property="og:image" content="{{ url_for('static', filename='logo.png') }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rebuttal — Win the disputes you should win.">
+  <meta name="twitter:description" content="AI dispute copilot for PayPal sellers. Gather evidence, evaluate likelihood, draft responses, and retain revenue.">
+  <meta name="twitter:image" content="{{ url_for('static', filename='logo.png') }}">
+
+  <!-- Icons -->
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.svg') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='logo.png') }}">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            rebuttal: {
+              violet: "#6D28D9",
+              electric: "#7C3AED",
+              indigo: "#4338CA",
+              navy: "#17113F",
+              ink: "#0F1020",
+              bg: "#FAFAFC",
+              soft: "#F3EEFF",
+              border: "#E8E5F0",
+              success: "#16A34A",
+              warning: "#F59E0B",
+              danger: "#DC2626",
+            },
+          },
+          fontFamily: {
+            sans: ["var(--font-inter)", "Inter", "sans-serif"],
+            heading: ["var(--font-heading)", "Plus Jakarta Sans", "Google Sans", "sans-serif"],
+          },
+          boxShadow: {
+            subtle: "0 1px 3px 0 rgba(15, 16, 32, 0.05), 0 1px 2px -1px rgba(15, 16, 32, 0.05)",
+            card: "0 4px 20px -2px rgba(23, 17, 63, 0.06), 0 2px 6px -1px rgba(23, 17, 63, 0.04)",
+            elevated: "0 12px 32px -4px rgba(23, 17, 63, 0.1), 0 4px 12px -2px rgba(23, 17, 63, 0.05)",
+            glow: "0 0 35px -5px rgba(124, 58, 237, 0.25)",
+          },
+          backgroundImage: {
+            "gradient-rebuttal": "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
+            "gradient-rebuttal-dark": "linear-gradient(180deg, #17113F 0%, #0F1020 100%)",
+            "gradient-soft": "linear-gradient(180deg, #F3EEFF 0%, #FFFFFF 100%)",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --font-inter: 'Inter', sans-serif;
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --background: #FAFAFC;
+      --foreground: #0F1020;
+      --navy: #17113F;
+      --primary-violet: #6D28D9;
+      --electric-violet: #7C3AED;
+      --indigo: #4338CA;
+      --soft-violet: #F3EEFF;
+      --border: #E8E5F0;
+      --card-bg: #FFFFFF;
+    }
+
+    html.dark {
+      --background: #0A0B14;
+      --foreground: #F8FAFC;
+      --navy: #0F1020;
+      --soft-violet: rgba(124, 58, 237, 0.15);
+      --border: rgba(255, 255, 255, 0.1);
+      --card-bg: #121324;
+    }
+
+    * {
+      border-color: #E8E5F0;
+      box-sizing: border-box;
+    }
+
+    .dark * {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: #FAFAFC;
+      color: #0F1020;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark {
+      background-color: #0A0B14;
+      color: #F8FAFC;
+    }
+
+    body {
+      background-color: #FAFAFC;
+      color: #0F1020;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark body {
+      background-color: #0A0B14;
+      color: #F8FAFC;
+    }
+
+    ::selection {
+      background-color: #F3EEFF;
+      color: #6D28D9;
+    }
+
+    .dark ::selection {
+      background-color: rgba(124, 58, 237, 0.3);
+      color: #C4B5FD;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(232, 229, 240, 0.8);
+    }
+
+    .dark .glass-panel {
+      background: rgba(18, 19, 36, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dark-glass-panel {
+      background: rgba(23, 17, 63, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-light {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E0D7FE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-grid-subtle {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(109, 40, 217, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(109, 40, 217, 0.04) 1px, transparent 1px);
+    }
+
+    .dark .bg-grid-subtle {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    .bg-grid-dark {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAFAFC;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0A0B14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8D4E5;
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #2D264D;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B6ADC9;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #473B7B;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-[#FAFAFC] dark:bg-[#0A0B14] text-[#0F1020] dark:text-[#F8FAFC] min-h-screen flex flex-col selection:bg-[#F3EEFF] dark:selection:bg-violet-950 selection:text-[#6D28D9] dark:selection:text-violet-300 transition-colors">
+  <div class="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0A0B14] text-[#0F1020] dark:text-[#F8FAFC] overflow-x-hidden selection:bg-[#F3EEFF] dark:selection:bg-violet-950 selection:text-[#6D28D9] dark:selection:text-violet-300 transition-colors">
+
+    <!-- Sticky Top Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          <!-- Brand Logo -->
+          <div class="flex items-center gap-3">
+            <a href="/" class="inline-flex items-center gap-2.5 select-none group font-heading" aria-label="Rebuttal">
+              <div class="relative inline-flex items-center justify-center overflow-hidden shrink-0 transition-transform duration-200 group-hover:scale-105" style="width: 34px; height: 34px;">
+                <img src="{{ url_for('static', filename='favicon.svg') }}" alt="Rebuttal" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <span class="font-bold tracking-tight text-xl text-[#0F1020] dark:text-white">Rebuttal</span>
+            </a>
+            <span class="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-[#F3EEFF] dark:bg-white/5 text-[#6D28D9] dark:text-violet-300 border border-[#E8E5F0] dark:border-white/10">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-pulse"></span>
+              PayPal Copilot
+            </span>
+          </div>
+
+          <!-- Desktop Navigation Links -->
+          <nav class="hidden md:flex items-center gap-7">
+            <a href="#product" class="text-sm font-medium text-[#17113F]/75 dark:text-gray-300 hover:text-[#7C3AED] dark:hover:text-white transition-colors">Product</a>
+            <a href="#how-it-works" class="text-sm font-medium text-[#17113F]/75 dark:text-gray-300 hover:text-[#7C3AED] dark:hover:text-white transition-colors">How it works</a>
+            <a href="#why-rebuttal" class="text-sm font-medium text-[#17113F]/75 dark:text-gray-300 hover:text-[#7C3AED] dark:hover:text-white transition-colors">Why Rebuttal</a>
+            <a href="#revenue" class="text-sm font-medium text-[#17113F]/75 dark:text-gray-300 hover:text-[#7C3AED] dark:hover:text-white transition-colors">Revenue</a>
+            <a href="#developers" class="text-sm font-medium text-[#17113F]/75 dark:text-gray-300 hover:text-[#7C3AED] dark:hover:text-white transition-colors">Developers</a>
+            <a href="#security" class="text-sm font-medium text-[#17113F]/75 dark:text-gray-300 hover:text-[#7C3AED] dark:hover:text-white transition-colors">Security</a>
+          </nav>
+
+          <!-- Right Action Buttons -->
+          <div class="hidden md:flex items-center gap-3.5">
+            <!-- Dark / Light Theme Toggle Button -->
+            <button
+              type="button"
+              data-action="toggle-theme"
+              class="p-2 rounded-xl border border-[#E8E5F0] dark:border-white/10 bg-white/70 dark:bg-white/5 text-[#17113F] dark:text-gray-200 hover:bg-[#F3EEFF] dark:hover:bg-white/10 transition-colors"
+              aria-label="Toggle dark/light theme"
+              title="Switch to light theme"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-400 icon-sun">
+                <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#7C3AED] icon-moon hidden">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+              </svg>
+            </button>
+
+            <a href="#login" class="text-sm font-medium text-[#17113F]/80 dark:text-gray-300 hover:text-[#0F1020] dark:hover:text-white transition-colors px-3 py-2">
+              Sign in
+            </a>
+            <a href="#get-started" class="inline-flex items-center gap-2 text-sm font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] hover:opacity-95 transition-all px-4 py-2.5 rounded-xl shadow-sm hover:shadow-glow">
+              <span>Get started</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Mobile menu toggle & theme -->
+          <div class="flex md:hidden items-center gap-2">
+            <button
+              type="button"
+              data-action="toggle-theme"
+              class="p-2 rounded-lg border border-[#E8E5F0] dark:border-white/10 bg-white dark:bg-white/5 text-gray-700 dark:text-gray-200"
+              aria-label="Toggle theme"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-400 icon-sun">
+                <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#7C3AED] icon-moon hidden">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+              </svg>
+            </button>
+
+            <button
+              id="mobile-menu-toggle"
+              type="button"
+              class="p-2 rounded-lg text-[#17113F] dark:text-white hover:bg-[#F3EEFF] dark:hover:bg-white/10 transition-colors"
+              aria-label="Toggle navigation menu"
+            >
+              <svg id="icon-menu-hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+              </svg>
+              <svg id="icon-menu-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 hidden">
+                <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile menu drawer -->
+        <div id="mobile-menu-drawer" class="hidden md:hidden mt-3 pt-4 pb-6 px-4 bg-white/95 dark:bg-[#0F1020]/95 backdrop-blur-xl rounded-2xl border border-[#E8E5F0] dark:border-white/10 shadow-elevated">
+          <div class="flex flex-col gap-3">
+            <a href="#product" class="px-3 py-2 text-base font-medium text-[#17113F] dark:text-gray-200 hover:text-[#7C3AED] hover:bg-[#F3EEFF] dark:hover:bg-white/5 rounded-lg transition-colors">Product</a>
+            <a href="#how-it-works" class="px-3 py-2 text-base font-medium text-[#17113F] dark:text-gray-200 hover:text-[#7C3AED] hover:bg-[#F3EEFF] dark:hover:bg-white/5 rounded-lg transition-colors">How it works</a>
+            <a href="#why-rebuttal" class="px-3 py-2 text-base font-medium text-[#17113F] dark:text-gray-200 hover:text-[#7C3AED] hover:bg-[#F3EEFF] dark:hover:bg-white/5 rounded-lg transition-colors">Why Rebuttal</a>
+            <a href="#revenue" class="px-3 py-2 text-base font-medium text-[#17113F] dark:text-gray-200 hover:text-[#7C3AED] hover:bg-[#F3EEFF] dark:hover:bg-white/5 rounded-lg transition-colors">Revenue</a>
+            <a href="#developers" class="px-3 py-2 text-base font-medium text-[#17113F] dark:text-gray-200 hover:text-[#7C3AED] hover:bg-[#F3EEFF] dark:hover:bg-white/5 rounded-lg transition-colors">Developers</a>
+            <a href="#security" class="px-3 py-2 text-base font-medium text-[#17113F] dark:text-gray-200 hover:text-[#7C3AED] hover:bg-[#F3EEFF] dark:hover:bg-white/5 rounded-lg transition-colors">Security</a>
+            <div class="border-t border-[#E8E5F0] dark:border-white/10 my-2 pt-3 flex flex-col gap-2">
+              <a href="#login" class="w-full text-center py-2.5 text-sm font-medium text-[#17113F] dark:text-gray-200 border border-[#E8E5F0] dark:border-white/10 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                Sign in
+              </a>
+              <a href="#get-started" class="w-full text-center py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] rounded-xl shadow-sm">
+                Get started
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Page Sections -->
+    <main class="flex-1">
+
+      <!-- Hero Section with Dashboard Preview -->
+      <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-grid-subtle transition-colors">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-b from-[#F3EEFF] dark:from-[#7C3AED]/15 via-transparent to-transparent pointer-events-none -z-10 blur-3xl opacity-70"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Hero Top Content -->
+          <div class="text-center max-w-3xl mx-auto space-y-5">
+            
+            <!-- Eyebrow Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F3EEFF] dark:bg-white/5 border border-[#E8E5F0] dark:border-white/10 text-xs font-semibold text-[#6D28D9] dark:text-violet-300 shadow-subtle">
+              <span class="w-2 h-2 rounded-full bg-[#7C3AED] animate-pulse"></span>
+              <span>AI Dispute Copilot for PayPal Sellers</span>
+            </div>
+
+            <!-- Huge Headline -->
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight leading-[1.1]">
+              Win the disputes <br />
+              <span class="gradient-text">you should win.</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto leading-relaxed">
+              Rebuttal gathers your tracking, scores your case, and writes the defense. You review it and submit in one click.
+            </p>
+
+            <!-- CTAs -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a href="#product" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] text-white text-sm font-semibold shadow-card hover:opacity-95 transition-all">
+                <span>Protect your revenue</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+
+              <a href="#how-it-works" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-[#E8E5F0] dark:border-white/15 bg-white dark:bg-white/5 text-[#0F1020] dark:text-white text-sm font-semibold hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED] fill-[#7C3AED]/20"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                <span>How it works</span>
+              </a>
+            </div>
+
+            <!-- Trust Statement -->
+            <div class="pt-1 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED]"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Human approval required. Nothing is sent without your review.</span>
+            </div>
+          </div>
+
+          <!-- Dashboard Preview Section -->
+          <div class="mt-12 sm:mt-16">
+            <section id="product" class="relative w-full">
+              <!-- Container with subtle glow behind dashboard -->
+              <div class="relative mx-auto max-w-6xl rounded-2xl p-1 sm:p-2.5 bg-gradient-to-b from-[#E8E5F0] dark:from-[#2A2359] via-[#F3EEFF]/40 dark:via-[#17113F]/40 to-transparent shadow-elevated transition-colors">
+                <div class="rounded-xl bg-white dark:bg-[#121324] border border-[#E8E5F0] dark:border-white/10 overflow-hidden shadow-subtle">
+                  
+                  <!-- Top Window Bar & PayPal Connection Status -->
+                  <div class="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 border-b border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-[#0F1020]">
+                    <!-- Left: Window controls & Brand identifier -->
+                    <div class="flex items-center gap-3">
+                      <div class="flex items-center gap-1.5 mr-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div class="relative inline-flex items-center justify-center overflow-hidden shrink-0" style="width: 26px; height: 26px;">
+                          <img src="{{ url_for('static', filename='favicon.svg') }}" alt="Rebuttal" class="w-full h-full object-contain rounded-lg">
+                        </div>
+                        <span class="text-xs font-bold text-[#0F1020] dark:text-white font-heading">Rebuttal OS</span>
+                      </div>
+                      <span class="text-gray-300 dark:text-gray-600">/</span>
+                      <span class="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:inline">Dispute Operations</span>
+                    </div>
+
+                    <!-- Middle/Right: Connected to PayPal badge -->
+                    <div class="flex items-center gap-3">
+                      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-xs font-medium text-emerald-800 dark:text-emerald-400">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>Connected to PayPal API</span>
+                      </div>
+
+                      <div class="hidden md:flex items-center gap-2 pl-2 border-l border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-300">
+                        <span class="w-6 h-6 rounded-full bg-[#17113F] dark:bg-violet-600 text-white flex items-center justify-center font-bold text-[10px]">
+                          AM
+                        </span>
+                        <span class="font-medium">Alex Mercer · Mercer Gear</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Inner Dashboard Body -->
+                  <div class="p-4 sm:p-6 lg:p-8 space-y-6 bg-white dark:bg-[#121324] transition-colors">
+                    
+                    <!-- Header Greeting & Fast Stats Bar -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E8E5F0]/60 dark:border-white/10">
+                      <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-[#0F1020] dark:text-white font-heading tracking-tight">
+                          Good morning, Alex
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                          1 urgent dispute requires human review. 4 active cases tracking on schedule.
+                        </p>
+                      </div>
+                      <div class="inline-flex items-center gap-2 text-xs font-medium text-[#7C3AED] dark:text-violet-300 bg-[#F3EEFF] dark:bg-white/5 px-3 py-1.5 rounded-lg border border-violet-100 dark:border-white/10 self-start sm:self-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.48 12H2"/></svg>
+                        <span>Syncing live PayPal dispute events</span>
+                      </div>
+                    </div>
+
+                    <!-- 4 Metric Cards -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                      <!-- Metric 1: Recovered -->
+                      <div class="p-4 rounded-xl border border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-[#17113F]/50 hover:border-violet-200 dark:hover:border-violet-500/30 transition-colors">
+                        <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 font-medium">
+                          <span>Recovered</span>
+                          <span class="inline-flex items-center text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-1.5 py-0.5 rounded">
+                            +18.4%
+                          </span>
+                        </div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-[#0F1020] dark:text-white font-heading mt-2">
+                          $12,840
+                        </div>
+                        <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-emerald-600 dark:text-emerald-400"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                          <span>48 successful rebuttals</span>
+                        </div>
+                      </div>
+
+                      <!-- Metric 2: Win likelihood -->
+                      <div class="p-4 rounded-xl border border-violet-100 dark:border-violet-500/20 bg-[#F3EEFF]/40 dark:bg-[#7C3AED]/10 hover:border-violet-300 transition-colors">
+                        <div class="flex items-center justify-between text-xs text-violet-800 dark:text-violet-300 font-medium">
+                          <span>Win likelihood</span>
+                          <span class="inline-flex items-center text-[11px] font-semibold text-violet-700 dark:text-violet-300 bg-white dark:bg-white/10 px-1.5 py-0.5 rounded border border-violet-200 dark:border-white/10">
+                            High
+                          </span>
+                        </div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-[#6D28D9] dark:text-violet-400 font-heading mt-2">
+                          87%
+                        </div>
+                        <div class="text-[11px] text-violet-700 dark:text-violet-300 mt-1 flex items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                          <span>Calibrated by dispute AI</span>
+                        </div>
+                      </div>
+
+                      <!-- Metric 3: Pending disputes -->
+                      <div class="p-4 rounded-xl border border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-[#17113F]/50 hover:border-violet-200 dark:hover:border-violet-500/30 transition-colors">
+                        <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 font-medium">
+                          <span>Pending disputes</span>
+                          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                        </div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-[#0F1020] dark:text-white font-heading mt-2">
+                          4
+                        </div>
+                        <div class="text-[11px] text-amber-700 dark:text-amber-400 mt-1">
+                          $1,730 total under review
+                        </div>
+                      </div>
+
+                      <!-- Metric 4: Avg response time -->
+                      <div class="p-4 rounded-xl border border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-[#17113F]/50 hover:border-violet-200 dark:hover:border-violet-500/30 transition-colors">
+                        <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 font-medium">
+                          <span>Avg response time</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-gray-400"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-[#0F1020] dark:text-white font-heading mt-2">
+                          18m
+                        </div>
+                        <div class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1">
+                          vs 4.2 days seller average
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Active Dispute Requiring Attention Banner -->
+                    <div class="rounded-xl border-2 border-violet-200 dark:border-violet-500/30 bg-white dark:bg-[#17113F]/70 p-5 sm:p-6 shadow-card relative overflow-hidden transition-colors">
+                      <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#7C3AED]/10 dark:from-[#7C3AED]/20 to-transparent pointer-events-none rounded-bl-full"></div>
+
+                      <!-- Card Header Tag -->
+                      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#E8E5F0] dark:border-white/10">
+                        <div class="flex items-center gap-2">
+                          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
+                            Dispute requiring attention
+                          </span>
+                          <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Case #PP-D-94812</span>
+                        </div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-medium">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          <span>Response deadline: 6 days remaining</span>
+                        </div>
+                      </div>
+
+                      <!-- Claim Title and Big Value -->
+                      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-5">
+                        <!-- Left 7 Cols: Claim Details & Evidence Checklist -->
+                        <div class="lg:col-span-7 space-y-4">
+                          <div class="flex items-baseline justify-between gap-4">
+                            <div>
+                              <div class="text-xs uppercase font-semibold tracking-wider text-gray-500 dark:text-gray-400">
+                                Dispute Reason
+                              </div>
+                              <h3 class="text-lg sm:text-xl font-bold text-[#0F1020] dark:text-white font-heading mt-0.5">
+                                Item not received
+                              </h3>
+                              <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                                Filed by Marcus Vance · Shopify Order #10842 · Oct 12, 2026
+                              </p>
+                            </div>
+                            <div class="text-right">
+                              <div class="text-xs uppercase font-semibold tracking-wider text-gray-500 dark:text-gray-400">
+                                Disputed Amount
+                              </div>
+                              <div class="text-2xl sm:text-3xl font-extrabold text-[#0F1020] dark:text-white font-heading">
+                                $428.00
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Evidence Checklist -->
+                          <div class="bg-[#FAFAFC] dark:bg-white/5 rounded-xl p-4 border border-[#E8E5F0] dark:border-white/10 space-y-2.5">
+                            <div class="text-xs font-bold text-[#17113F] dark:text-white uppercase tracking-wider flex items-center justify-between">
+                              <span>Compiled Case Evidence</span>
+                              <span class="text-emerald-700 dark:text-emerald-400 font-semibold text-[11px] bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20">
+                                4/4 Verified
+                              </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-xs">
+                              <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200 bg-white dark:bg-[#121324] p-2 rounded-lg border border-[#E8E5F0]/80 dark:border-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                <span class="font-medium">Tracking verified</span>
+                              </div>
+                              <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200 bg-white dark:bg-[#121324] p-2 rounded-lg border border-[#E8E5F0]/80 dark:border-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                <span class="font-medium">Order matched</span>
+                              </div>
+                              <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200 bg-white dark:bg-[#121324] p-2 rounded-lg border border-[#E8E5F0]/80 dark:border-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                <span class="font-medium">Delivery confirmed</span>
+                              </div>
+                              <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200 bg-white dark:bg-[#121324] p-2 rounded-lg border border-[#E8E5F0]/80 dark:border-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                <span class="font-medium">Seller policy found</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Right 5 Cols: AI Win Likelihood & Explanation -->
+                        <div class="lg:col-span-5 flex flex-col justify-between p-4 sm:p-5 rounded-xl bg-gradient-to-b from-[#F3EEFF]/80 dark:from-white/5 to-[#FAFAFC] dark:to-white/5 border border-violet-100 dark:border-white/10">
+                          <div class="space-y-3">
+                            <!-- Win Likelihood Meter -->
+                            <div>
+                              <div class="flex items-center justify-between text-xs mb-1.5">
+                                <span class="font-bold text-[#17113F] dark:text-white flex items-center gap-1.5">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED]"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                                  Win likelihood
+                                </span>
+                                <span class="text-base font-extrabold text-[#6D28D9] dark:text-violet-400 font-heading">
+                                  87%
+                                </span>
+                              </div>
+                              <!-- Visual Progress Bar -->
+                              <div class="w-full h-3 rounded-full bg-violet-100 dark:bg-white/10 overflow-hidden p-0.5 border border-violet-200 dark:border-white/10">
+                                <div class="h-full rounded-full bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] transition-all duration-1000" style="width: 87%;"></div>
+                              </div>
+                              <div class="flex justify-between text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">
+                                <span>Low risk</span>
+                                <span>High confidence</span>
+                              </div>
+                            </div>
+
+                            <!-- AI Explanation Box -->
+                            <div class="rounded-lg bg-white/90 dark:bg-[#0F1020]/90 p-3 border border-violet-200/70 dark:border-white/10 text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                              <span class="font-bold text-[#6D28D9] dark:text-violet-400 block mb-1">
+                                AI Case Evaluation:
+                              </span>
+                              &ldquo;Delivery tracking confirms the package reached the buyer&apos;s address and the transaction matches the order record.&rdquo;
+                            </div>
+                          </div>
+
+                          <!-- Call to action buttons -->
+                          <div class="pt-4 flex flex-col sm:flex-row items-center gap-2.5">
+                            <button
+                              type="button"
+                              data-action="open-modal"
+                              class="w-full sm:flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] text-white text-xs font-bold shadow-sm hover:opacity-95 hover:shadow-glow transition-all"
+                            >
+                              <span>Review response</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                            </button>
+
+                            <button
+                              type="button"
+                              id="btn-accept-claim"
+                              class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-[#E8E5F0] dark:border-white/15 bg-white dark:bg-white/5 text-gray-700 dark:text-gray-300 text-xs font-semibold hover:bg-gray-50 dark:hover:bg-white/10 transition-colors"
+                            >
+                              Accept claim
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Bottom Trust Guarantee Footnote -->
+                      <div class="mt-4 pt-3 border-t border-[#E8E5F0]/70 dark:border-white/10 flex flex-wrap items-center justify-between text-[11px] text-gray-500 dark:text-gray-400 gap-2">
+                        <span class="flex items-center gap-1.5">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-[#7C3AED]"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                          Human review gate enabled: No automated submission without your approval.
+                        </span>
+                        <span class="text-violet-700 dark:text-violet-400 font-medium">Click &ldquo;Review response&rdquo; to test live</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 01: The Problem -->
+      <section id="why-rebuttal" class="py-20 sm:py-24 bg-[#FAFAFC] dark:bg-[#0A0B14] border-t border-[#E8E5F0] dark:border-white/10 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="max-w-2xl mb-12 sm:mb-16">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#6D28D9] dark:text-violet-400 mb-2">
+              The Problem
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight">
+              Disputes cost money when evidence is scattered.
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              PayPal gives you limited time to respond. Most sellers lose winnable cases simply because pulling receipts and tracking takes too long.
+            </p>
+          </div>
+
+          <!-- 3 Problem Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Problem Card 1 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-6 sm:p-7 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:border-violet-300 dark:hover:border-violet-500/30 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-10 h-10 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">01</span>
+                </div>
+                <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading mb-1">Tight Deadlines</h3>
+                <h4 class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 mb-2.5">Every dispute has a timer.</h4>
+                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  You only get a few days to reply. Miss the window, and PayPal automatically refunds the buyer from your money.
+                </p>
+              </div>
+              <div class="mt-6 pt-3.5 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-500 dark:text-gray-400">10-20 Day Limit</span>
+                <span class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1">
+                  Fixed by Rebuttal
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Problem Card 2 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-6 sm:p-7 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:border-violet-300 dark:hover:border-violet-500/30 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-10 h-10 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED]"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">02</span>
+                </div>
+                <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading mb-1">Scattered Evidence</h3>
+                <h4 class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 mb-2.5">Proof is spread everywhere.</h4>
+                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Tracking is at USPS, receipts are in Shopify, and messages are in your inbox. Gathering it by hand takes hours.
+                </p>
+              </div>
+              <div class="mt-6 pt-3.5 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-500 dark:text-gray-400">Hours of Work</span>
+                <span class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1">
+                  Fixed by Rebuttal
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Problem Card 3 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-6 sm:p-7 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:border-violet-300 dark:hover:border-violet-500/30 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-10 h-10 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED]"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">03</span>
+                </div>
+                <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading mb-1">Weak Responses</h3>
+                <h4 class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 mb-2.5">Angry replies don&apos;t win.</h4>
+                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  PayPal only accepts clear, factual proof. Missing one tracking detail turns a winnable dispute into lost money.
+                </p>
+              </div>
+              <div class="mt-6 pt-3.5 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-500 dark:text-gray-400">Lost Revenue</span>
+                <span class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1">
+                  Fixed by Rebuttal
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 02: How Rebuttal Works -->
+      <section id="how-it-works" class="py-20 sm:py-24 bg-white dark:bg-[#0F1020] border-t border-[#E8E5F0] dark:border-white/10 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="max-w-2xl mb-12 sm:mb-16">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#6D28D9] dark:text-violet-400 mb-2">
+              How It Works
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight">
+              From dispute to decision in minutes.
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              A simple 4-step workflow that keeps you in control from start to finish.
+            </p>
+          </div>
+
+          <!-- 4 Steps Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Step 1 -->
+            <div data-step-index="0" class="cursor-pointer rounded-2xl p-6 border transition-all flex flex-col justify-between bg-white dark:bg-[#17113F] border-[#7C3AED] shadow-card ring-2 ring-[#7C3AED]/20">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="step-icon-container w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] shadow-glow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">01</span>
+                </div>
+                <div class="text-xs font-bold uppercase tracking-wider text-[#7C3AED] dark:text-violet-400 mb-1">Receive</div>
+                <h3 class="text-base font-bold text-[#0F1020] dark:text-white font-heading mb-2 leading-snug">Dispute arrives automatically.</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Rebuttal catches the dispute from PayPal the moment it&apos;s filed.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-400 dark:text-gray-500">Auto</span>
+                <span class="text-gray-400 text-[11px]">Step 1 of 4</span>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div data-step-index="1" class="cursor-pointer rounded-2xl p-6 border transition-all flex flex-col justify-between bg-[#FAFAFC] dark:bg-[#121324] border-[#E8E5F0] dark:border-white/10 hover:border-violet-300">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="step-icon-container w-10 h-10 rounded-xl flex items-center justify-center bg-[#17113F] dark:bg-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><circle cx="11" cy="13" r="3"/><path d="m13.2 15.2 2.8 2.8"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">02</span>
+                </div>
+                <div class="text-xs font-bold uppercase tracking-wider text-[#7C3AED] dark:text-violet-400 mb-1">Gather</div>
+                <h3 class="text-base font-bold text-[#0F1020] dark:text-white font-heading mb-2 leading-snug">Evidence is pulled together.</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  We match tracking, order info, receipts, and buyer messages into one file.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-400 dark:text-gray-500">Auto</span>
+                <span class="text-gray-400 text-[11px]">Step 2 of 4</span>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div data-step-index="2" class="cursor-pointer rounded-2xl p-6 border transition-all flex flex-col justify-between bg-[#FAFAFC] dark:bg-[#121324] border-[#E8E5F0] dark:border-white/10 hover:border-violet-300">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="step-icon-container w-10 h-10 rounded-xl flex items-center justify-center bg-[#17113F] dark:bg-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">03</span>
+                </div>
+                <div class="text-xs font-bold uppercase tracking-wider text-[#7C3AED] dark:text-violet-400 mb-1">Rebuttal</div>
+                <h3 class="text-base font-bold text-[#0F1020] dark:text-white font-heading mb-2 leading-snug">AI writes the response.</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  AI scores your win chances and drafts a factual, policy-backed reply.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-400 dark:text-gray-500">Auto</span>
+                <span class="text-gray-400 text-[11px]">Step 3 of 4</span>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div data-step-index="3" class="cursor-pointer rounded-2xl p-6 border transition-all flex flex-col justify-between bg-[#FAFAFC] dark:bg-[#121324] border-[#E8E5F0] dark:border-white/10 hover:border-violet-300">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="step-icon-container w-10 h-10 rounded-xl flex items-center justify-center bg-[#17113F] dark:bg-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">04</span>
+                </div>
+                <div class="text-xs font-bold uppercase tracking-wider text-[#7C3AED] dark:text-violet-400 mb-1">Approve</div>
+                <h3 class="text-base font-bold text-[#0F1020] dark:text-white font-heading mb-2 leading-snug">You review and submit.</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  You check the reply and click approve. Nothing sends without your say.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="inline-flex items-center gap-1 font-bold text-violet-700 dark:text-violet-300 bg-[#F3EEFF] dark:bg-white/10 px-2 py-0.5 rounded">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  Human Approval
+                </span>
+                <span class="text-gray-400 text-[11px]">Step 4 of 4</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Small Human Approval Banner -->
+          <div class="mt-8 rounded-xl bg-gradient-to-r from-[#F3EEFF] dark:from-white/5 to-[#FAFAFC] dark:to-white/5 border border-violet-100 dark:border-white/10 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED] shrink-0"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                <strong class="text-[#0F1020] dark:text-white">Human review required:</strong> We prepare the evidence, but nothing is submitted until you click approve.
+              </p>
+            </div>
+            <a href="#ai-section" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#7C3AED] dark:text-violet-400 shrink-0">
+              <span>See AI evaluation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 03: Explainable AI Section -->
+      <section id="ai-section" class="py-20 sm:py-24 bg-[#FAFAFC] dark:bg-[#0A0B14] border-t border-[#E8E5F0] dark:border-white/10 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="max-w-2xl mb-12 sm:mb-16">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#6D28D9] dark:text-violet-400 mb-2">
+              Explainable AI
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight">
+              AI that shows its work.
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              Rebuttal tells you why a case is winnable, cites the exact PayPal rule, and points out any missing facts.
+            </p>
+          </div>
+
+          <!-- Split Layout -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column (5 Cols) -->
+            <div class="lg:col-span-5 space-y-5">
+              <h3 class="text-xl sm:text-3xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight leading-snug">
+                Know why a case is worth fighting.
+              </h3>
+
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                No black-box answers. Rebuttal checks carrier GPS stamps, signature records, and order history against PayPal Seller Protection guidelines.
+              </p>
+
+              <div class="space-y-3 pt-1">
+                <div class="flex items-start gap-2.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <p class="text-xs text-gray-700 dark:text-gray-300">
+                    <strong class="text-gray-900 dark:text-white">Delivery Proof:</strong> Verifies package reached buyer&apos;s zip code.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-2.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  <p class="text-xs text-gray-700 dark:text-gray-300">
+                    <strong class="text-gray-900 dark:text-white">Risk Warnings:</strong> Flags gaps in customer messages before you reply.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-2.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                  <p class="text-xs text-gray-700 dark:text-gray-300">
+                    <strong class="text-gray-900 dark:text-white">Policy Defense:</strong> Writes formal arguments based on Section 11.3.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-1">
+                <button
+                  type="button"
+                  id="ai-toggle-draft-btn-1"
+                  class="inline-flex items-center gap-1.5 text-xs font-bold text-[#7C3AED] dark:text-violet-400 hover:text-[#6D28D9]"
+                >
+                  <span>Preview sample draft response →</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column (7 Cols): Live AI Card -->
+            <div class="lg:col-span-7">
+              <div class="rounded-2xl bg-white dark:bg-[#121324] border border-[#E8E5F0] dark:border-white/10 shadow-card p-6 sm:p-7 space-y-5">
+                
+                <!-- Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-[#E8E5F0] dark:border-white/10">
+                  <div>
+                    <span class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      Win Likelihood
+                    </span>
+                    <div class="text-3xl font-extrabold text-[#6D28D9] dark:text-violet-400 font-heading mt-0.5">
+                      87%
+                    </div>
+                  </div>
+
+                  <div class="text-right">
+                    <span class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+                      Recommendation
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-[#16A34A]/10 text-[#16A34A] border border-[#16A34A]/20 mt-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                      Fight Claim
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Factors -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <span class="font-bold text-[#16A34A] block mb-2">FOR (3)</span>
+                    <div class="space-y-1.5 text-gray-700 dark:text-gray-300">
+                      <div class="flex items-center gap-1.5 bg-[#FAFAFC] dark:bg-white/5 p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#16A34A] shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                        <span>Tracking confirms delivery</span>
+                      </div>
+                      <div class="flex items-center gap-1.5 bg-[#FAFAFC] dark:bg-white/5 p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#16A34A] shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                        <span>Order matches transaction</span>
+                      </div>
+                      <div class="flex items-center gap-1.5 bg-[#FAFAFC] dark:bg-white/5 p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#16A34A] shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                        <span>Store policy supports claim</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span class="font-bold text-red-500 block mb-2">AGAINST (1)</span>
+                    <div class="space-y-1.5 text-gray-700 dark:text-gray-300">
+                      <div class="flex items-center gap-1.5 bg-amber-50/60 dark:bg-amber-500/10 p-2 rounded-lg text-amber-900 dark:text-amber-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-amber-600 shrink-0"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Buyer message was unanswered</span>
+                      </div>
+                      <div class="text-[11px] text-gray-500 dark:text-gray-400 p-2">
+                        Mitigated by carrier delivery scan.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="pt-1 flex items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    id="ai-toggle-draft-btn-2"
+                    class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] text-white text-xs font-bold shadow-sm hover:opacity-95"
+                  >
+                    Generate response →
+                  </button>
+                  <span class="text-[11px] text-gray-400 italic">
+                    Estimate based on PayPal policy data.
+                  </span>
+                </div>
+
+                <!-- Draft Box -->
+                <div id="ai-draft-box" class="hidden mt-3 pt-3 border-t border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-white/5 rounded-xl p-3.5 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-gray-700 dark:text-gray-300">
+                      Generated Response Letter
+                    </span>
+                    <button
+                      type="button"
+                      id="ai-copy-draft-btn"
+                      class="text-xs font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1"
+                    >
+                      <span class="copy-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                      </span>
+                      <span class="copy-text">Copy</span>
+                    </button>
+                  </div>
+                  <pre id="ai-draft-content" class="text-xs font-mono text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto p-2.5 bg-white dark:bg-[#0A0B14] rounded-lg border border-[#E8E5F0] dark:border-white/10">To the PayPal Dispute Team,
+
+We are submitting evidence for Dispute Case #PP-D-94812 ($428.00 USD).
+
+The buyer claimed "Item Not Received". Carrier records confirm successful delivery:
+
+1. CARRIER: USPS Priority Mail (Tracking: 9400 1118 9922 3190 248).
+2. PROOF: Delivered on Oct 14 at 11:42 AM to front door in Austin, TX 78701, matching the transaction address.
+3. MATCH: Order #10842 invoice matches this purchase.
+
+Under PayPal Seller Protection (Section 11.3), online tracking confirming delivery qualifies this transaction for dispute protection.
+
+Please close this dispute in our favor and release the funds.
+
+Alex Mercer · Mercer Gear</pre>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 04: Dark Revenue & Financial Analytics -->
+      <section id="revenue" class="py-24 sm:py-32 bg-[#0F1020] text-white relative overflow-hidden bg-grid-dark">
+        <!-- Dark violet ambient glow behind the chart -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#7C3AED]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <!-- Section Header -->
+          <div class="max-w-3xl mb-16 sm:mb-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-violet-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED]"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>FINANCIAL INTELLIGENCE</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
+              Turn recovered disputes into visible revenue.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-gray-400 leading-relaxed">
+              Every won dispute is profit saved from being written off. Rebuttal tracks every dollar recovered, measures win velocity across dispute types, and builds a defensible ledger of store health.
+            </p>
+          </div>
+
+          <!-- 4 Stat Overview Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            
+            <!-- Main Stat: Recovered -->
+            <div class="p-6 rounded-2xl bg-[#17113F]/90 border border-white/10 shadow-card">
+              <div class="flex items-center justify-between text-xs text-gray-400 font-medium">
+                <span>Total Recovered</span>
+                <span class="inline-flex items-center gap-1 text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                  +18.4%
+                </span>
+              </div>
+              <div class="text-3xl sm:text-4xl font-extrabold text-white font-heading mt-2">
+                $12,840
+              </div>
+              <div class="text-xs text-gray-400 mt-2 font-mono">
+                Saved from chargeback forfeitures
+              </div>
+            </div>
+
+            <!-- Won Status -->
+            <div class="p-6 rounded-2xl bg-[#17113F]/90 border border-white/10 shadow-card">
+              <div class="flex items-center justify-between text-xs text-gray-400 font-medium">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  Won Cases
+                </span>
+                <span class="text-xs font-mono text-gray-400">87% Rate</span>
+              </div>
+              <div class="text-3xl sm:text-4xl font-extrabold text-white font-heading mt-2">
+                48
+              </div>
+              <div class="text-xs text-emerald-400/90 mt-2 font-mono">
+                $12,840 retained revenue
+              </div>
+            </div>
+
+            <!-- Lost Status -->
+            <div class="p-6 rounded-2xl bg-[#17113F]/90 border border-white/10 shadow-card">
+              <div class="flex items-center justify-between text-xs text-gray-400 font-medium">
+                <span class="flex items-center gap-1.5 text-red-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                  Lost Cases
+                </span>
+                <span class="text-xs font-mono text-gray-400">13% Rate</span>
+              </div>
+              <div class="text-3xl sm:text-4xl font-extrabold text-white font-heading mt-2">
+                7
+              </div>
+              <div class="text-xs text-gray-400 mt-2 font-mono">
+                Uncontested / defect claims
+              </div>
+            </div>
+
+            <!-- Pending Status -->
+            <div class="p-6 rounded-2xl bg-[#17113F]/90 border border-white/10 shadow-card">
+              <div class="flex items-center justify-between text-xs text-gray-400 font-medium">
+                <span class="flex items-center gap-1.5 text-amber-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Pending
+                </span>
+                <span class="text-xs font-mono text-amber-400">Active</span>
+              </div>
+              <div class="text-3xl sm:text-4xl font-extrabold text-white font-heading mt-2">
+                4
+              </div>
+              <div class="text-xs text-amber-400/90 mt-2 font-mono">
+                $1,730 currently in review
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Financial Chart & Resolution Stream -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left: Monthly Revenue Recovery Chart (7 Cols) -->
+            <div class="lg:col-span-7 rounded-2xl bg-[#17113F]/80 border border-white/10 p-6 sm:p-7 shadow-card">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-6 border-b border-white/10">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-violet-300">
+                    RECOVERY RUN-RATE
+                  </span>
+                  <h3 class="text-lg font-bold text-white font-heading mt-0.5">
+                    Monthly Recovered Dispute Capital
+                  </h3>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs font-mono text-gray-400">Selected YTD Peak:</span>
+                  <div id="ytd-peak-display" class="text-lg font-bold text-emerald-400 font-mono">
+                    $12,840
+                  </div>
+                </div>
+              </div>
+
+              <!-- Custom Interactive SVG/CSS Bar + Line Chart -->
+              <div class="pt-6 pb-2">
+                <div class="h-56 flex items-end justify-between gap-3 sm:gap-6 px-2">
+                  <!-- May (idx 0, $2,400 -> 17%) -->
+                  <div data-chart-month-idx="0" class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                    <span class="bar-tooltip text-[10px] font-mono transition-opacity opacity-0 group-hover:opacity-100 text-gray-400">
+                      $2.4k
+                    </span>
+                    <div class="w-full bg-white/5 rounded-t-lg h-44 flex items-end p-1">
+                      <div class="bar-fill w-full rounded-t-md transition-all duration-300 bg-gradient-to-t from-violet-900/60 to-violet-600/60 group-hover:from-[#4F46E5]/80 group-hover:to-[#7C3AED]/80" style="height: 17%;"></div>
+                    </div>
+                    <span class="bar-label text-xs font-mono text-gray-400">May</span>
+                  </div>
+
+                  <!-- Jun (idx 1, $3,950 -> 28%) -->
+                  <div data-chart-month-idx="1" class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                    <span class="bar-tooltip text-[10px] font-mono transition-opacity opacity-0 group-hover:opacity-100 text-gray-400">
+                      $4.0k
+                    </span>
+                    <div class="w-full bg-white/5 rounded-t-lg h-44 flex items-end p-1">
+                      <div class="bar-fill w-full rounded-t-md transition-all duration-300 bg-gradient-to-t from-violet-900/60 to-violet-600/60 group-hover:from-[#4F46E5]/80 group-hover:to-[#7C3AED]/80" style="height: 28%;"></div>
+                    </div>
+                    <span class="bar-label text-xs font-mono text-gray-400">Jun</span>
+                  </div>
+
+                  <!-- Jul (idx 2, $5,600 -> 40%) -->
+                  <div data-chart-month-idx="2" class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                    <span class="bar-tooltip text-[10px] font-mono transition-opacity opacity-0 group-hover:opacity-100 text-gray-400">
+                      $5.6k
+                    </span>
+                    <div class="w-full bg-white/5 rounded-t-lg h-44 flex items-end p-1">
+                      <div class="bar-fill w-full rounded-t-md transition-all duration-300 bg-gradient-to-t from-violet-900/60 to-violet-600/60 group-hover:from-[#4F46E5]/80 group-hover:to-[#7C3AED]/80" style="height: 40%;"></div>
+                    </div>
+                    <span class="bar-label text-xs font-mono text-gray-400">Jul</span>
+                  </div>
+
+                  <!-- Aug (idx 3, $8,200 -> 59%) -->
+                  <div data-chart-month-idx="3" class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                    <span class="bar-tooltip text-[10px] font-mono transition-opacity opacity-0 group-hover:opacity-100 text-gray-400">
+                      $8.2k
+                    </span>
+                    <div class="w-full bg-white/5 rounded-t-lg h-44 flex items-end p-1">
+                      <div class="bar-fill w-full rounded-t-md transition-all duration-300 bg-gradient-to-t from-violet-900/60 to-violet-600/60 group-hover:from-[#4F46E5]/80 group-hover:to-[#7C3AED]/80" style="height: 59%;"></div>
+                    </div>
+                    <span class="bar-label text-xs font-mono text-gray-400">Aug</span>
+                  </div>
+
+                  <!-- Sep (idx 4, $10,450 -> 75%) -->
+                  <div data-chart-month-idx="4" class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                    <span class="bar-tooltip text-[10px] font-mono transition-opacity opacity-0 group-hover:opacity-100 text-gray-400">
+                      $10.5k
+                    </span>
+                    <div class="w-full bg-white/5 rounded-t-lg h-44 flex items-end p-1">
+                      <div class="bar-fill w-full rounded-t-md transition-all duration-300 bg-gradient-to-t from-violet-900/60 to-violet-600/60 group-hover:from-[#4F46E5]/80 group-hover:to-[#7C3AED]/80" style="height: 75%;"></div>
+                    </div>
+                    <span class="bar-label text-xs font-mono text-gray-400">Sep</span>
+                  </div>
+
+                  <!-- Oct (idx 5, $12,840 -> 92%, default selected) -->
+                  <div data-chart-month-idx="5" class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                    <span class="bar-tooltip text-[10px] font-mono transition-opacity opacity-100 text-violet-300 font-bold">
+                      $12.8k
+                    </span>
+                    <div class="w-full bg-white/5 rounded-t-lg h-44 flex items-end p-1">
+                      <div class="bar-fill w-full rounded-t-md transition-all duration-300 bg-gradient-to-t from-[#4F46E5] to-[#7C3AED] shadow-glow" style="height: 92%;"></div>
+                    </div>
+                    <span class="bar-label text-xs font-mono text-white font-bold">Oct</span>
+                  </div>
+                </div>
+
+                <!-- Chart Legend -->
+                <div class="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between text-xs text-gray-400 font-mono">
+                  <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-sm bg-gradient-to-r from-[#7C3AED] to-[#4F46E5]"></span>
+                      <span>Dispute Capital Retained ($)</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-sm bg-emerald-400"></span>
+                      <span>Won Rulings</span>
+                    </div>
+                  </div>
+                  <span>PayPal Disputes API Sync</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Live Dispute Resolution Ledger (5 Cols) -->
+            <div class="lg:col-span-5 rounded-2xl bg-[#17113F]/80 border border-white/10 p-6 sm:p-7 shadow-card">
+              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                <h3 class="text-base font-bold text-white font-heading">
+                  Recent Case Outcomes
+                </h3>
+                <span class="text-xs font-mono text-gray-400">Live stream</span>
+              </div>
+
+              <div class="mt-4 space-y-3">
+                <!-- Case 1 -->
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-colors flex items-center justify-between text-xs">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-gray-400 text-[11px]">PP-D-94812</span>
+                      <span class="font-semibold text-white">Marcus Vance</span>
+                    </div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">
+                      Item Not Received · Oct 14, 2026
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="font-bold text-white font-mono">$428.00</div>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300">
+                      PENDING
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-colors flex items-center justify-between text-xs">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-gray-400 text-[11px]">PP-D-93201</span>
+                      <span class="font-semibold text-white">Elena Rostova</span>
+                    </div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">
+                      Unauthorized Transaction · Oct 10, 2026
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="font-bold text-white font-mono">$892.50</div>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">
+                      WON
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-colors flex items-center justify-between text-xs">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-gray-400 text-[11px]">PP-D-92188</span>
+                      <span class="font-semibold text-white">David Kim</span>
+                    </div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">
+                      Significantly Not As Described · Oct 04, 2026
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="font-bold text-white font-mono">$310.00</div>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">
+                      WON
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-colors flex items-center justify-between text-xs">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-gray-400 text-[11px]">PP-D-91043</span>
+                      <span class="font-semibold text-white">Sarah Jenkins</span>
+                    </div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">
+                      Item Not Received · Sep 28, 2026
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="font-bold text-white font-mono">$215.00</div>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/20 text-red-400">
+                      LOST
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Case 5 -->
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-colors flex items-center justify-between text-xs">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-gray-400 text-[11px]">PP-D-90412</span>
+                      <span class="font-semibold text-white">Liam O&apos;Connor</span>
+                    </div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">
+                      Duplicate Charge · Sep 22, 2026
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="font-bold text-white font-mono">$640.00</div>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">
+                      WON
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                <span class="text-xs text-gray-400 font-mono">
+                  Average payout recovery turnaround: 72 hours
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 05: Developer API & PayPal Webhooks Platform -->
+      <section id="developers" class="py-24 sm:py-32 bg-[#0F1020] text-white relative overflow-hidden border-t border-white/10 bg-grid-dark">
+        <!-- Background ambient violet glow -->
+        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[350px] bg-[#7C3AED]/15 blur-[140px] pointer-events-none rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <!-- Section Header -->
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+            <div class="max-w-2xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-violet-300 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED]"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                <span>DEVELOPER PLATFORM & WEBHOOKS</span>
+              </div>
+              <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
+                Built for developers. <br />
+                <span class="gradient-text">Ready for PayPal.</span>
+              </h2>
+              <p class="mt-3 text-sm sm:text-base text-gray-400">
+                Integrate dispute defense into your stack. Catch PayPal webhooks, match carrier tracking, and draft responses with a few lines of code.
+              </p>
+            </div>
+
+            <!-- Quick Install Bar -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div class="flex items-center gap-2 bg-[#17113F] border border-white/10 px-4 py-2.5 rounded-xl font-mono text-xs text-gray-300 shadow-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED]"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+                <span>npm i @rebuttal/sdk</span>
+                <button
+                  type="button"
+                  id="btn-copy-install"
+                  class="ml-2 p-1 text-gray-400 hover:text-white transition-colors"
+                  title="Copy install command"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </button>
+              </div>
+              <a href="#docs" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-semibold text-white transition-colors">
+                <span>Read API Docs</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Code Showcase Split Layout -->
+          <div class="rounded-2xl bg-[#17113F]/90 border border-white/10 shadow-elevated overflow-hidden">
+            
+            <!-- Top Bar with Tab Buttons & Action -->
+            <div class="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-white/10 bg-[#0F1020]/70">
+              <!-- Tabs -->
+              <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1">
+                <button
+                  type="button"
+                  data-dev-tab="webhook"
+                  class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors flex items-center gap-1.5 bg-[#7C3AED] text-white shadow-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2"/><path d="m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06l3.19 5.86c.55.97 1.7 1.38 2.7 1.08"/><circle cx="12" cy="12" r="2"/></svg>
+                  <span>PayPal Webhook</span>
+                </button>
+
+                <button
+                  type="button"
+                  data-dev-tab="sdk"
+                  class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors flex items-center gap-1.5 text-gray-400 hover:text-white hover:bg-white/5"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M10 12.5 8 15l2 2.5"/><path d="m14 12.5 2 2.5-2 2.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/></svg>
+                  <span>TypeScript SDK</span>
+                </button>
+
+                <button
+                  type="button"
+                  data-dev-tab="curl"
+                  class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors flex items-center gap-1.5 text-gray-400 hover:text-white hover:bg-white/5"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+                  <span>cURL</span>
+                </button>
+
+                <button
+                  type="button"
+                  data-dev-tab="json"
+                  class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors flex items-center gap-1.5 text-gray-400 hover:text-white hover:bg-white/5"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+                  <span>Evaluation JSON</span>
+                </button>
+              </div>
+
+              <!-- Copy Code Button -->
+              <button
+                type="button"
+                id="btn-copy-dev-code"
+                class="inline-flex items-center gap-1.5 text-xs text-violet-300 hover:text-white font-mono bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy code</span>
+              </button>
+            </div>
+
+            <!-- Code Body -->
+            <div class="p-4 sm:p-6 overflow-x-auto bg-[#0A0B14]">
+              <pre class="font-mono text-xs sm:text-[13px] leading-relaxed text-gray-200 selection:bg-[#7C3AED]/40"><code id="dev-code-block">// Next.js / Node.js PayPal Webhook Handler
+import { Rebuttal } from "@rebuttal/sdk";
+
+const rebuttal = new Rebuttal({
+  apiKey: process.env.REBUTTAL_API_KEY,
+  paypalClientId: process.env.PAYPAL_CLIENT_ID,
+  paypalSecret: process.env.PAYPAL_SECRET,
+});
+
+export async function POST(req: Request) {
+  const event = await req.json();
+
+  // Handle incoming dispute event from PayPal Resolution Center
+  if (event.event_type === "CUSTOMER.DISPUTE.CREATED") {
+    const caseFile = await rebuttal.disputes.receive({
+      disputeId: event.resource.dispute_id,
+      transactionId: event.resource.disputed_transactions[0].seller_transaction_id,
+      amount: event.resource.dispute_amount.value,
+      currency: event.resource.dispute_amount.currency_code,
+      reason: event.resource.reason, // e.g. MERCHANDISE_OR_SERVICE_NOT_RECEIVED
+    });
+
+    // Automatically aggregate carrier tracking & store invoices
+    await rebuttal.evidence.autoCompile(caseFile.id);
+
+    console.log(`Case ${caseFile.id} compiled. Win likelihood: ${caseFile.score}%`);
+  }
+
+  return Response.json({ status: "acknowledged" });
+}</code></pre>
+            </div>
+
+            <!-- Bottom Feature Badges -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 sm:p-6 border-t border-white/10 bg-[#0F1020]/40 text-xs">
+              <div class="flex items-start gap-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                <div>
+                  <span class="font-bold text-white block">Verified Signatures</span>
+                  <span class="text-gray-400">Validates PayPal webhook tokens and certificate chains automatically.</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <div>
+                  <span class="font-bold text-white block">&lt; 300ms Inference</span>
+                  <span class="text-gray-400">Low-latency case scoring with explainability reasons.</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-violet-400 shrink-0 mt-0.5"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                <div>
+                  <span class="font-bold text-white block">Multi-Carrier Adapters</span>
+                  <span class="text-gray-400">Unified tracking parser for USPS, FedEx, UPS, and DHL.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 06: Proactive Prevention Rules -->
+      <section class="py-24 sm:py-32 bg-white dark:bg-[#0F1020] border-t border-[#E8E5F0] dark:border-white/10 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="max-w-3xl mb-16 sm:mb-20">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#6D28D9] dark:text-violet-400 mb-3">
+              04 — Prevention & Intelligence
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight leading-tight">
+              Stop repeating the same mistakes.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              Winning disputes is essential, but preventing them entirely preserves your merchant standing and buyer trust. Rebuttal mines dispute patterns to recommend targeted operational changes.
+            </p>
+          </div>
+
+          <!-- 3 Prevention Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Card 1 -->
+            <div class="rounded-2xl bg-[#FAFAFC] dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 hover:border-violet-300 dark:hover:border-violet-500/30 hover:bg-white dark:hover:bg-[#17113F]/50 hover:shadow-card transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-11 h-11 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED] dark:text-violet-400"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                  </div>
+                  <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-500/20">
+                    -42% Disputes
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading mb-2">
+                  Auto-sync tracking
+                </h3>
+
+                <div class="inline-flex items-center gap-1.5 text-xs text-violet-800 dark:text-violet-300 bg-[#F3EEFF] dark:bg-white/5 px-2 py-0.5 rounded font-mono mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-[#7C3AED] dark:text-violet-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>Fulfillment Sync</span>
+                </div>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Uploads carrier tracking right away so buyers cannot claim non-delivery.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-500 dark:text-gray-400">Trigger: Missing tracking</span>
+                <span class="font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1">
+                  Active policy
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#16A34A]"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="rounded-2xl bg-[#FAFAFC] dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 hover:border-violet-300 dark:hover:border-violet-500/30 hover:bg-white dark:hover:bg-[#17113F]/50 hover:shadow-card transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-11 h-11 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED] dark:text-violet-400"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-500/20">
+                    +65% Early Fixes
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading mb-2">
+                  Catch upset buyers early
+                </h3>
+
+                <div class="inline-flex items-center gap-1.5 text-xs text-violet-800 dark:text-violet-300 bg-[#F3EEFF] dark:bg-white/5 px-2 py-0.5 rounded font-mono mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-[#7C3AED] dark:text-violet-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>Early Warning</span>
+                </div>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Flags unhappy customers so you can solve issues before they open a dispute.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-500 dark:text-gray-400">Trigger: Unanswered inquiry</span>
+                <span class="font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1">
+                  Active policy
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#16A34A]"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="rounded-2xl bg-[#FAFAFC] dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 hover:border-violet-300 dark:hover:border-violet-500/30 hover:bg-white dark:hover:bg-[#17113F]/50 hover:shadow-card transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-11 h-11 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#7C3AED] dark:text-violet-400"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m3 15 2 2 4-4"/></svg>
+                  </div>
+                  <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-500/20">
+                    -31% Claims
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading mb-2">
+                  Fix confusing descriptions
+                </h3>
+
+                <div class="inline-flex items-center gap-1.5 text-xs text-violet-800 dark:text-violet-300 bg-[#F3EEFF] dark:bg-white/5 px-2 py-0.5 rounded font-mono mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-[#7C3AED] dark:text-violet-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>Listing Review</span>
+                </div>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Spots products that get disputed often so you can clarify sizing and details.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#E8E5F0]/70 dark:border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-500 dark:text-gray-400">Trigger: Item not as described</span>
+                <span class="font-semibold text-[#7C3AED] dark:text-violet-400 flex items-center gap-1">
+                  Active policy
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#16A34A]"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 07: Security, Trust & Human Approval -->
+      <section id="security" class="py-24 sm:py-32 bg-[#FAFAFC] dark:bg-[#0A0B14] border-t border-[#E8E5F0] dark:border-white/10 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="max-w-3xl mb-16 sm:mb-20">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#6D28D9] dark:text-violet-400 mb-3">
+              05 — Trust & Governance
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#0F1020] dark:text-white font-heading tracking-tight leading-tight">
+              Built to keep sellers in control.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              When customer relationships and payment processing privileges are on the line, blind autonomy is a liability. Rebuttal operates on strict principles of transparency, human oversight, and verifiable auditability.
+            </p>
+          </div>
+
+          <!-- 4 Trust Principles Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <!-- Principle 1 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:shadow-card hover:border-violet-200 dark:hover:border-violet-500/30 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#7C3AED] dark:text-violet-400"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading">
+                    Human Approval
+                  </h3>
+                  <h4 class="text-sm font-semibold text-[#6D28D9] dark:text-violet-400 mt-0.5 mb-2">
+                    &ldquo;Nothing is sent without you.&rdquo;
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    You have the final say. Review the letter, edit it, and click approve.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Principle 2 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:shadow-card hover:border-violet-200 dark:hover:border-violet-500/30 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#7C3AED] dark:text-violet-400"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading">
+                    Real Facts Only
+                  </h3>
+                  <h4 class="text-sm font-semibold text-[#6D28D9] dark:text-violet-400 mt-0.5 mb-2">
+                    &ldquo;No hallucinated claims.&rdquo;
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    The AI only uses verified tracking numbers, dates, and order receipts.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Principle 3 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:shadow-card hover:border-violet-200 dark:hover:border-violet-500/30 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#7C3AED] dark:text-violet-400"><path d="2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading">
+                    Clear Reasons
+                  </h3>
+                  <h4 class="text-sm font-semibold text-[#6D28D9] dark:text-violet-400 mt-0.5 mb-2">
+                    &ldquo;See why you can win.&rdquo;
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    We show the points in your favor and any risks before you decide to fight.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Principle 4 -->
+            <div class="rounded-2xl bg-white dark:bg-[#121324] p-7 sm:p-8 border border-[#E8E5F0] dark:border-white/10 shadow-subtle hover:shadow-card hover:border-violet-200 dark:hover:border-violet-500/30 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#F3EEFF] dark:bg-white/5 border border-violet-100 dark:border-white/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#7C3AED] dark:text-violet-400"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-[#0F1020] dark:text-white font-heading">
+                    Audit Trail
+                  </h3>
+                  <h4 class="text-sm font-semibold text-[#6D28D9] dark:text-violet-400 mt-0.5 mb-2">
+                    &ldquo;Everything is logged.&rdquo;
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Every file, response draft, and PayPal submission is saved for your records.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Compliance Banner -->
+          <div class="mt-12 rounded-2xl bg-white dark:bg-[#121324] border border-[#E8E5F0] dark:border-white/10 p-6 sm:p-8 shadow-subtle flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-1 text-center md:text-left">
+              <h4 class="text-base font-bold text-[#0F1020] dark:text-white">
+                Bank-Grade Encryption & Official API Integration
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                OAuth 2.0 authenticated connections directly to PayPal REST Disputes API. Zero storage of customer credit cards or banking credentials.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>TLS 1.3 / AES-256</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                <span>SOC2 Compliant Cloud</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span>PayPal Partner Ready</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 08: Final Dark CTA -->
+      <section class="py-20 sm:py-28 bg-[#17113F] text-white relative overflow-hidden bg-grid-dark">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-[#7C3AED]/20 to-[#4F46E5]/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+          
+          <!-- Logo Icon -->
+          <div class="flex justify-center">
+            <a href="/" class="inline-flex items-center group select-none" aria-label="Rebuttal Icon">
+              <div class="relative inline-flex items-center justify-center overflow-hidden shrink-0 transition-transform duration-200 group-hover:scale-105" style="width: 42px; height: 42px;">
+                <img src="{{ url_for('static', filename='favicon.svg') }}" alt="Rebuttal" class="w-full h-full object-contain rounded-lg">
+              </div>
+            </a>
+          </div>
+
+          <!-- Headline -->
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
+            Don&apos;t lose money on disputes you should win.
+          </h2>
+
+          <!-- Supporting text -->
+          <p class="text-base sm:text-lg text-gray-300 max-w-lg mx-auto">
+            Let Rebuttal handle the evidence. You make the final decision. Connect in 3 minutes.
+          </p>
+
+          <!-- Action Button -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="#get-started" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] text-white text-sm font-bold shadow-elevated hover:opacity-95 transition-all">
+              <span>Get started</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+
+            <a href="#product" class="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3.5 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold transition-colors">
+              <span>See live dashboard</span>
+            </a>
+          </div>
+
+          <!-- Simple bullet points -->
+          <div class="pt-4 flex flex-wrap items-center justify-center gap-5 text-xs text-gray-400">
+            <span class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+              No credit card needed
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+              Human approval gate
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+              3-minute PayPal setup
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F1020] text-gray-400 border-t border-white/10 pt-16 pb-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Main Footer Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-white/10">
+          
+          <!-- Brand Info & Tagline (2 cols) -->
+          <div class="lg:col-span-2 space-y-4">
+            <a href="/" class="inline-flex items-center gap-2.5 select-none group font-heading" aria-label="Rebuttal">
+              <div class="relative inline-flex items-center justify-center overflow-hidden shrink-0 transition-transform duration-200 group-hover:scale-105" style="width: 34px; height: 34px;">
+                <img src="{{ url_for('static', filename='favicon.svg') }}" alt="Rebuttal" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <span class="font-bold tracking-tight text-xl text-white">Rebuttal</span>
+            </a>
+            <p class="text-sm text-gray-400 max-w-sm font-heading font-medium text-white/90">
+              Win the disputes you should win.
+            </p>
+            <p class="text-xs text-gray-500 leading-relaxed max-w-sm">
+              AI-powered dispute copilot for PayPal sellers. Gathers evidence, evaluates cases, drafts factual responses, and requires human approval before submission.
+            </p>
+            <div class="flex items-center gap-2 pt-2 text-xs text-gray-500 font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+              <span>All Systems Operational · PayPal API Active</span>
+            </div>
+          </div>
+
+          <!-- Product Links -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              Product
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li><a href="#product" class="hover:text-white transition-colors">Overview</a></li>
+              <li><a href="#how-it-works" class="hover:text-white transition-colors">How it works</a></li>
+              <li><a href="#ai-section" class="hover:text-white transition-colors">Explainable AI</a></li>
+              <li><a href="#revenue" class="hover:text-white transition-colors">Revenue Recovery</a></li>
+              <li><a href="#security" class="hover:text-white transition-colors">Security</a></li>
+            </ul>
+          </div>
+
+          <!-- How It Works Links -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              How it works
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li><a href="#how-it-works" class="hover:text-white transition-colors">01 Receive Event</a></li>
+              <li><a href="#how-it-works" class="hover:text-white transition-colors">02 Gather Evidence</a></li>
+              <li><a href="#how-it-works" class="hover:text-white transition-colors">03 AI Rebuttal</a></li>
+              <li><a href="#how-it-works" class="hover:text-white transition-colors">04 Human Approval</a></li>
+            </ul>
+          </div>
+
+          <!-- Documentation Links -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              Documentation
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li><a href="#docs" class="hover:text-white transition-colors">API Connectors</a></li>
+              <li><a href="#docs" class="hover:text-white transition-colors">PayPal Webhooks</a></li>
+              <li><a href="#docs" class="hover:text-white transition-colors">Seller Protection</a></li>
+              <li><a href="#docs" class="hover:text-white transition-colors">Evidence Standards</a></li>
+            </ul>
+          </div>
+
+          <!-- Company Links -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              Company
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#privacy" class="hover:text-white transition-colors">Privacy</a></li>
+              <li><a href="#terms" class="hover:text-white transition-colors">Terms</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Bottom Copyright & Disclaimer -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+          <div>
+            © 2026 Rebuttal. All rights reserved.
+          </div>
+          <div class="flex items-center gap-6">
+            <a href="#privacy" class="hover:text-gray-400">Privacy Policy</a>
+            <a href="#terms" class="hover:text-gray-400">Terms of Service</a>
+            <a href="#security" class="hover:text-gray-400">Trust Center</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Interactive Dispute Modal -->
+    <div id="dispute-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <!-- Backdrop -->
+      <div id="modal-backdrop" class="fixed inset-0 bg-[#0F1020]/75 backdrop-blur-sm transition-opacity"></div>
+
+      <!-- Modal Dialog -->
+      <div class="relative w-full max-w-4xl bg-white dark:bg-[#121324] rounded-2xl shadow-elevated border border-[#E8E5F0] dark:border-white/10 overflow-hidden my-8 z-10 transition-colors">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between px-6 py-4 border-b border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-[#0F1020]">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center shrink-0">
+              <div class="relative inline-flex items-center justify-center overflow-hidden shrink-0" style="width: 36px; height: 36px;">
+                <img src="{{ url_for('static', filename='favicon.svg') }}" alt="Rebuttal" class="w-full h-full object-contain rounded-lg">
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300">
+                  PP-D-94812
+                </span>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">
+                  6 days left
+                </span>
+              </div>
+              <h3 class="text-base font-bold text-[#0F1020] dark:text-white font-heading">
+                Review & Human Approval: Item Not Received
+              </h3>
+            </div>
+          </div>
+          <button
+            type="button"
+            data-action="close-modal"
+            class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Submission Confirmation View (initially hidden) -->
+        <div id="modal-success-view" class="hidden p-8 sm:p-12 text-center">
+          <div class="w-16 h-16 rounded-full bg-[#16A34A]/10 text-[#16A34A] flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h4 class="text-2xl font-bold text-[#0F1020] dark:text-white font-heading mb-2">
+            Rebuttal Successfully Dispatched to PayPal
+          </h4>
+          <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto text-sm mb-6 leading-relaxed">
+            Your factual defense, verified carrier GPS tracking, and Shopify order files have been transmitted to the PayPal Resolution Center API.
+          </p>
+          <div class="bg-[#FAFAFC] dark:bg-white/5 border border-[#E8E5F0] dark:border-white/10 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-xs font-mono space-y-1.5 text-gray-700 dark:text-gray-300">
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">PayPal Case ID:</span>
+              <span class="font-semibold text-gray-900 dark:text-white">PP-D-94812</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">API Transmit Token:</span>
+              <span class="text-violet-700 dark:text-violet-400 font-semibold">PP-DISP-TX-9941829B</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">Authorization:</span>
+              <span>Human Approved by Alex Mercer</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">Dispute Amount:</span>
+              <span class="font-bold text-gray-900 dark:text-white">$428.00 USD</span>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="modal-done-btn"
+            class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] text-white text-sm font-semibold shadow-sm hover:opacity-95"
+          >
+            Done & Return to Dashboard
+          </button>
+        </div>
+
+        <!-- Main Review Content -->
+        <div id="modal-review-view" class="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
+          <!-- Top Overview Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-3.5 rounded-xl border border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-white/5">
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Claim Amount</span>
+              <div class="text-xl font-bold text-[#0F1020] dark:text-white font-heading mt-0.5">
+                $428.00
+              </div>
+              <span class="text-[11px] text-gray-500 dark:text-gray-400">Buyer: Marcus Vance</span>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-violet-100 dark:border-violet-500/20 bg-[#F3EEFF]/60 dark:bg-violet-500/10">
+              <span class="text-xs text-violet-800 dark:text-violet-300 font-semibold flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#7C3AED]"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                Win Likelihood
+              </span>
+              <div class="text-xl font-bold text-[#6D28D9] dark:text-violet-400 font-heading mt-0.5">
+                87%
+              </div>
+              <span class="text-[11px] text-violet-700 dark:text-violet-300 font-medium">Recommendation: Fight</span>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-white/5">
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Human Control</span>
+              <div class="text-sm font-semibold text-gray-900 dark:text-white mt-1 flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#7C3AED]"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Approval Mandatory
+              </div>
+              <span class="text-[11px] text-gray-500 dark:text-gray-400">Zero auto-submissions</span>
+            </div>
+          </div>
+
+          <!-- Gathered Evidence Panel -->
+          <div class="border border-[#E8E5F0] dark:border-white/10 rounded-xl p-4 bg-white dark:bg-[#121324]">
+            <h4 class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#7C3AED]"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+              Gathered Evidence (4 items verified)
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div class="flex items-start gap-2 p-2 rounded-lg bg-[#FAFAFC] dark:bg-white/5 border border-[#E8E5F0] dark:border-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="text-gray-700 dark:text-gray-300 leading-snug">Tracking confirms delivered to buyer&apos;s address (Austin, TX)</span>
+              </div>
+              <div class="flex items-start gap-2 p-2 rounded-lg bg-[#FAFAFC] dark:bg-white/5 border border-[#E8E5F0] dark:border-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="text-gray-700 dark:text-gray-300 leading-snug">Order matches transaction #10842</span>
+              </div>
+              <div class="flex items-start gap-2 p-2 rounded-lg bg-[#FAFAFC] dark:bg-white/5 border border-[#E8E5F0] dark:border-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="text-gray-700 dark:text-gray-300 leading-snug">Store policy supports your claim</span>
+              </div>
+              <div class="flex items-start gap-2 p-2 rounded-lg bg-[#FAFAFC] dark:bg-white/5 border border-[#E8E5F0] dark:border-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="text-gray-700 dark:text-gray-300 leading-snug">USPS Priority proof attached</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Generated Rebuttal Letter (Editable) -->
+          <div class="border border-[#E8E5F0] dark:border-white/10 rounded-xl p-4 bg-white dark:bg-[#121324]">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#7C3AED]"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                <span class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  Draft Rebuttal Response (Factual & Policy-Grounded)
+                </span>
+              </div>
+              <button
+                type="button"
+                id="modal-copy-btn"
+                class="inline-flex items-center gap-1 text-xs text-[#7C3AED] dark:text-violet-400 hover:text-[#6D28D9] font-medium"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                Copy letter
+              </button>
+            </div>
+            <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-2">
+              You can freely edit or refine any paragraph below before giving final authorization.
+            </p>
+            <textarea
+              id="modal-draft-textarea"
+              rows="9"
+              class="w-full text-xs font-mono leading-relaxed p-3.5 rounded-lg border border-[#E8E5F0] dark:border-white/10 bg-[#FAFAFC] dark:bg-[#0A0B14] text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED]"
+            >To the PayPal Dispute Team,
+
+We are submitting evidence for Dispute Case #PP-D-94812 ($428.00 USD).
+
+The buyer claimed "Item Not Received". Carrier records confirm successful delivery:
+
+1. CARRIER: USPS Priority Mail (Tracking: 9400 1118 9922 3190 248).
+2. PROOF: Delivered on Oct 14 at 11:42 AM to front door in Austin, TX 78701, matching the transaction address.
+3. MATCH: Order #10842 invoice matches this purchase.
+
+Under PayPal Seller Protection (Section 11.3), online tracking confirming delivery qualifies this transaction for dispute protection.
+
+Please close this dispute in our favor and release the funds.
+
+Alex Mercer · Mercer Gear</textarea>
+          </div>
+
+          <!-- Human In The Loop Approval Checkbox -->
+          <div class="p-4 rounded-xl border-2 border-violet-200 dark:border-violet-500/30 bg-[#F3EEFF]/40 dark:bg-violet-950/20">
+            <label class="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                id="modal-human-approval"
+                class="mt-1 h-4 w-4 rounded border-gray-300 text-[#7C3AED] focus:ring-[#7C3AED]"
+              >
+              <div class="text-xs">
+                <span class="font-bold text-[#17113F] dark:text-white block">
+                  Human Authorization Required
+                </span>
+                <span class="text-gray-600 dark:text-gray-400 leading-relaxed block mt-0.5">
+                  I confirm that I have reviewed the case evidence and authorize Rebuttal to formally dispatch this response to the PayPal Disputes API under PayPal Seller Protection Section 11.3.
+                </span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Footer Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+            <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-500"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+              <span>Win likelihood is an objective estimate, not a guarantee.</span>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <button
+                type="button"
+                data-action="close-modal"
+                class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-[#E8E5F0] dark:border-white/15 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/10"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                id="modal-submit-btn"
+                disabled
+                class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs font-semibold text-gray-500 bg-gray-300 dark:bg-white/10 cursor-not-allowed transition-all shadow-sm"
+              >
+                <span>Submit Rebuttal to PayPal</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Consolidated App JS -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
